@@ -5,9 +5,9 @@ use think\Validate;
 class Brand extends Validate
 {
 protected $rule =   [
-        'brand_name'  => 'require|unique:brand',
-        'brand_url'   => 'url',
-        'brand_description' => 'min:6',    
+    'brand_name'  => 'require|unique:brand',
+    'brand_url'   => 'url',
+    'brand_description' => 'min:6',    
     ];
     
 protected $message  =   [
