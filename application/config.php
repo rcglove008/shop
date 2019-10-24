@@ -145,6 +145,7 @@ return [
     // 视图输出字符串内容替换
     'view_replace_str'       => [
         '__admin__'=>'/shop/public/static/admin',
+        '__plus__'=>'/shop/public/static/plus',
         '__uploads__'=>'/shop/public/static/uploads',
     ],
     // 默认跳转页面对应的模板文件

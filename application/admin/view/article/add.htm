@@ -17,6 +17,9 @@
     <link href="__admin__/style/demo.css" rel="stylesheet">
     <link href="__admin__/style/typicons.css" rel="stylesheet">
     <link href="__admin__/style/animate.css" rel="stylesheet">
+    <script src="__plus__/ueditor/ueditor.config.js"></script>
+    <script src="__plus__/ueditor/ueditor.all.min.js"></script>
+    <script src="__plus__/ueditor/lang/zh-cn/zh-cn.js"></script>
 </head>
 
 <body>
@@ -38,7 +41,7 @@
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
                         <li><a href="{:url('index/index')}">系统</a></li>
-                        <li><a href="{:url('cate/lst')}"">文章管理</a></li>
+                        <li><a href="{:url('lst')}"">文章管理</a></li>
                     <li class=" active">添加文章</li>
                     </ul>
                 </div>
@@ -55,54 +58,82 @@
                                     <div id="horizontal-form">
                                         <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
                                             <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">上级分类</label>
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">所属栏目</label>
                                                 <div class="col-sm-6">
-                                                    <select class="form-control" name="pid">
-                                                        <option value="0">顶级分类</option>
-                                                        {volist name="cateRes" id="cate"}
-                                                        <option  {if condition="$cate['allow_son'] eq 0"} disabled="disabled" {/if} value="{$cate.id}">
-                                                            <?php echo str_repeat('-', $cate['level'] * 8); ?>{$cate.cate_name}</option>
-                                                        {/volist}
+                                                    <select>
+                                                        <option>选择栏目</option>
                                                     </select>
                                                 </div>
                                                 <p class="help-block col-sm-4 red">* 必填</p>
                                             </div>
                                             <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">分类名称</label>
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">标题</label>
                                                 <div class="col-sm-6">
-                                                    <input class="form-control" placeholder="" name="cate_name" required="" type="text">
+                                                    <input class="form-control" placeholder="" name="brand_name" required="" type="text">
                                                 </div>
                                                 <p class="help-block col-sm-4 red">* 必填</p>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">显示到导航</label>
+                                             <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">是否置顶</label>
                                                 <div class="col-sm-6">
                                                     <div class="radio" style="float:left; padding-right:10px;">
                                                         <label>
-                                                            <input name="show_nav" value="1" class="colored-blue" type="radio">
-                                                            <span class="text">显示</span>
+                                                            <input name="status" value="1" class="colored-blue" checked="checked" type="radio">
+                                                            <span class="text">是</span>
                                                         </label>
                                                     </div>
                                                     <div class="radio" style="float:left;">
                                                         <label>
-                                                            <input name="show_nav" value="0" class="colored-blue" checked="checked" type="radio">
-                                                            <span class="text">隐藏</span>
+                                                            <input name="status" value="0" class="colored-blue" type="radio">
+                                                            <span class="text">否</span>
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+                                             <div class="form-group">
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">关键词</label>
                                                 <div class="col-sm-6">
-                                                    <textarea class="form-control" name="keywords"></textarea>
+                                                    <textarea class="form-control" name="brand_description"></textarea>
+                                                </div>
+                                            </div>
+                                             <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">描述</label>
+                                                <div class="col-sm-6">
+                                                    <textarea class="form-control" name="brand_description"></textarea>
+                                                </div>
+                                            </div>
+                                     
+                                            <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">作者</label>
+                                                <div class="col-sm-6">
+                                                    <input class="form-control" placeholder="" name="brand_url" type="text">
+                                                </div>
+                                            </div>
+                                               <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">邮箱</label>
+                                                <div class="col-sm-6">
+                                                    <input class="form-control" placeholder="" name="brand_url" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">文章描述</label>
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">外联</label>
                                                 <div class="col-sm-6">
-                                                    <textarea class="form-control" name="description"></textarea>
+                                                    <input class="form-control" placeholder="" name="brand_url" type="text">
                                                 </div>
                                             </div>
+                                            <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">缩略图</label>
+                                                <div class="col-sm-6">
+                                                    <input placeholder="" name="brand_img" type="file">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">文章内容</label>
+                                                <div class="col-sm-6">
+                                                    <textarea id="content" name="content"></textarea>
+                                                </div>
+                                            </div>
+                                           
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
                                                     <button type="submit" class="btn btn-default">保存信息</button>
@@ -126,6 +157,12 @@
     <script src="__admin__/style/jquery.js"></script>
     <!--Beyond Scripts-->
     <script src="__admin__/style/beyond.js"></script>
+
+     <script type="text/javascript">
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    UE.getEditor('content',{initialFrameWidth:700,initialFrameHeight:400,});
+    </script>
 </body>
 
 </html>

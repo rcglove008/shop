@@ -48,11 +48,11 @@ class Cate extends Controller
             }
             //栏目类型1、系统分类 2、帮助分类、3网店帮助 4、网店信息 5、普通分类
             //验证
-            //
-            // $validate = validate('Brand');
-            // if(!$validate->check($data)){
-            // $this->error($validate->getError());
-            // }
+            $validate = validate('Cate');
+            if(!$validate->check($data)){
+            $this->error($validate->getError());
+            }
+
             $add = $cateObj->insert($data);
             if ($add) {
                 $this->success('添加文章分类成功', 'lst');
@@ -76,6 +76,12 @@ class Cate extends Controller
 
         if (request()->isPost()) {
             $data = input('post.');
+            // 验证
+            $validate = validate('Cate');
+            if(!$validate->check($data)){
+            $this->error($validate->getError());
+            }
+
             $save = $cateObj->update($data);
             //dump($save !== false );die;
             if ($save !== false) {
