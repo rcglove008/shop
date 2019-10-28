@@ -112,6 +112,19 @@ class Cate extends Controller
         if ($arrRes) {
             $this->error('不能删除系统分类', 'lst');
         }
+        //删除分类前判断该分类的文章和文章相关缩略图
+        //
+        $article=db('article');
+        foreach ($sonids as $k => $v) {
+            $artRes=$article->field('id,thumb')->where(array('cate_id' =>$v ))->select();
+            foreach ($artRes as $k1 => $v1) {
+                $thumbSrc=IMG_UPLOADS.$v1['thumb'];
+                if (file_exists($thumbSrc)) {
+                    @unlink($thumbSrc);
+                }
+            }
+            # code...
+        }
         $del = db('cate')->delete($sonids);
         if ($del) {
             $this->success('删除成功', 'lst');

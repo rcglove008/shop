@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:81:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\article\add.htm";i:1571842963;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1571797321;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:81:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\article\add.htm";i:1572063246;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572098343;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -262,8 +262,25 @@
                     <i class="menu-expand"></i>
                 </a>
             </li>
-            <li><a href="#">
+            <li><a href="<?php echo url('article/lst'); ?>">
                     <span class="menu-text">文章管理</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<ul class="nav sidebar-menu">
+    <!--Dashboard-->
+    <li>
+        <a href="#" class="menu-dropdown">
+            <i class="menu-icon fa fa-picture-o"></i>
+            <span class="menu-text">图片管理</span>
+            <i class="menu-expand"></i>
+        </a>
+        <ul class="submenu">
+            <li><a href="<?php echo url('article/imglist'); ?>">
+                    <span class="menu-text">图片列表</span>
                     <i class="menu-expand"></i>
                 </a>
             </li>
@@ -315,8 +332,11 @@
                                             <div class="form-group">
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">所属栏目</label>
                                                 <div class="col-sm-6">
-                                                    <select>
-                                                        <option>选择栏目</option>
+                                                    <select name="cate_id">
+                                                       <?php if(is_array($cateRes) || $cateRes instanceof \think\Collection || $cateRes instanceof \think\Paginator): $i = 0; $__LIST__ = $cateRes;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$cate): $mod = ($i % 2 );++$i;?>
+                                                        <option  <?php if(in_array(($cate['id']), explode(',',"0,1,2"))): ?> disabled="disabled" <?php endif; ?> value="<?php echo $cate['id']; ?>">
+                                                            <?php echo str_repeat('-', $cate['level'] * 8); ?><?php echo $cate['cate_name']; ?></option>
+                                                        <?php endforeach; endif; else: echo "" ;endif; ?>
                                                     </select>
                                                 </div>
                                                 <p class="help-block col-sm-4 red">* 必填</p>
@@ -324,7 +344,7 @@
                                             <div class="form-group">
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">标题</label>
                                                 <div class="col-sm-6">
-                                                    <input class="form-control" placeholder="" name="brand_name" required="" type="text">
+                                                    <input class="form-control" placeholder="" name="title" required="" type="text">
                                                 </div>
                                                 <p class="help-block col-sm-4 red">* 必填</p>
                                             </div>
@@ -333,13 +353,13 @@
                                                 <div class="col-sm-6">
                                                     <div class="radio" style="float:left; padding-right:10px;">
                                                         <label>
-                                                            <input name="status" value="1" class="colored-blue" checked="checked" type="radio">
+                                                            <input name="show_top" value="1" class="colored-blue" checked="checked" type="radio">
                                                             <span class="text">是</span>
                                                         </label>
                                                     </div>
                                                     <div class="radio" style="float:left;">
                                                         <label>
-                                                            <input name="status" value="0" class="colored-blue" type="radio">
+                                                            <input name="show_top" value="0" class="colored-blue" type="radio">
                                                             <span class="text">否</span>
                                                         </label>
                                                     </div>
@@ -348,38 +368,38 @@
                                              <div class="form-group">
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">关键词</label>
                                                 <div class="col-sm-6">
-                                                    <textarea class="form-control" name="brand_description"></textarea>
+                                                    <textarea class="form-control" name="keyworks"></textarea>
                                                 </div>
                                             </div>
                                              <div class="form-group">
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">描述</label>
                                                 <div class="col-sm-6">
-                                                    <textarea class="form-control" name="brand_description"></textarea>
+                                                    <textarea class="form-control" name="description"></textarea>
                                                 </div>
                                             </div>
                                      
                                             <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">作者</label>
+                                                <label for="username" class="col-sm-2 control-label no-padding-right" >作者</label>
                                                 <div class="col-sm-6">
-                                                    <input class="form-control" placeholder="" name="brand_url" type="text">
+                                                    <input class="form-control" placeholder="" name="author" type="text">
                                                 </div>
                                             </div>
                                                <div class="form-group">
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">邮箱</label>
                                                 <div class="col-sm-6">
-                                                    <input class="form-control" placeholder="" name="brand_url" type="text">
+                                                    <input class="form-control" placeholder="" name="email" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">外联</label>
                                                 <div class="col-sm-6">
-                                                    <input class="form-control" placeholder="" name="brand_url" type="text">
+                                                    <input class="form-control" placeholder="" name="link_url" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">缩略图</label>
                                                 <div class="col-sm-6">
-                                                    <input placeholder="" name="brand_img" type="file">
+                                                    <input placeholder="" name="thumb" type="file">
                                                 </div>
                                             </div>
                                             <div class="form-group">

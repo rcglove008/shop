@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:82:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\article\list.htm";i:1572184783;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572098343;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:80:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\brand\list.htm";i:1571797244;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572010055;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -271,23 +271,6 @@
     <!--Dashboard-->
     <li>
         <a href="#" class="menu-dropdown">
-            <i class="menu-icon fa fa-picture-o"></i>
-            <span class="menu-text">图片管理</span>
-            <i class="menu-expand"></i>
-        </a>
-        <ul class="submenu">
-            <li><a href="<?php echo url('article/imglist'); ?>">
-                    <span class="menu-text">图片列表</span>
-                    <i class="menu-expand"></i>
-                </a>
-            </li>
-        </ul>
-    </li>
-</ul>
-<ul class="nav sidebar-menu">
-    <!--Dashboard-->
-    <li>
-        <a href="#" class="menu-dropdown">
             <i class="menu-icon fa fa-gear"></i>
             <span class="menu-text">数据库管理</span>
             <i class="menu-expand"></i>
@@ -310,13 +293,13 @@
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
                         <li><a href="<?php echo url('index/index'); ?>">系统</a></li>
-                        <li class="active">文章管理</li>
+                        <li class="active">用户管理</li>
                     </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
                 <!-- Page Body -->
                 <div class="page-body">
-                    <button type="button" tooltip="添加文章" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '<?php echo url ('add'); ?>'"> <i class="fa fa-plus"></i> Add
+                    <button type="button" tooltip="添加品牌" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '<?php echo url ('add'); ?>'"> <i class="fa fa-plus"></i> Add
                     </button>
                     <div class="row">
                         <div class="col-lg-12 col-sm-12 col-xs-12">
@@ -327,61 +310,48 @@
                                             <thead class="">
                                                 <tr>
                                                     <th class="text-center" width="5%">ID</th>
-                                                    <th class="text-center" width="20%" >标题</th>
-                                                    <th class="text-center" width="10%">缩略图</th>
-                                                    <th class="text-center" width="6%">所属栏目</th>
-                                                    <th class="text-center" width="6%">跳转</th>
-                                                    <th class="text-center" width="4%">是否置顶</th>
-                                                    <th class="text-center" width="9%">发布时间</th>
-                                                    <th class="text-center" width="2%">显示状态</th>
-                                                    <th class="text-center" width="10%">操作</th>
+                                                    <th class="text-center">品牌名称</th>
+                                                    <th>品牌地址</th>
+                                                    <th class="text-center">品牌LOGO</th>
+                                                    <th>品牌描述</th>
+                                                    <th class="text-center" width="5%">状态</th>
+                                                    <th class="text-center" width="16%">操作</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php if(is_array($artRes) || $artRes instanceof \think\Collection || $artRes instanceof \think\Paginator): $i = 0; $__LIST__ = $artRes;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$article): $mod = ($i % 2 );++$i;?>
+                                                <?php if(is_array($brandRes) || $brandRes instanceof \think\Collection || $brandRes instanceof \think\Paginator): $i = 0; $__LIST__ = $brandRes;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$brand): $mod = ($i % 2 );++$i;?>
                                                 <tr>
-                                                    <td align="center"><?php echo $article['id']; ?></td>
-                                                    <td align="left"><?php echo cut_str($article['title'],5); ?></td>
+                                                    <td align="center"><?php echo $brand['id']; ?></td>
+                                                    <td align="center"><?php echo $brand['brand_name']; ?></td>
+                                                    <td><a href="<?php echo $brand['brand_url']; ?>" target="_blank"><?php echo $brand['brand_url']; ?></a></td>
                                                     <td align="center">
-                                                        <?php if($article['thumb'] != ''): ?>
-                                                        <img src="/shop/public/static/uploads/<?php echo $article['thumb']; ?>" width="40px">
-                                                        <?php else: ?>
-                                                        暂无图片
+                                                        <?php if($brand['brand_img'] != ''): ?>
+                                                        <img src="/shop/public/static/uploads/<?php echo $brand['brand_img']; ?>" height="30">
+                                                        <?php else: ?>暂无图片
                                                         <?php endif; ?>
                                                     </td>
-                                                    <td align="center"><?php echo $article['cate_name']; ?></td>
-                                                    <td>
-                                                        <?php if($article['link_url'] != ''): ?>
-                                                        <a href="<?php echo $article['link_url']; ?>" target="_blank"><?php echo $article['link_url']; ?></a>
-                                                        <?php else: ?>
-                                                        暂无链接
-                                                        <?php endif; ?>
-                                                    </td>
+                                                    <td><?php echo cut_str($brand['brand_description'],12); ?></td>
                                                     <td align="center">
-                                                        <?php if($article['show_top'] == 1): ?> 是 <?php else: ?> 否 <?php endif; ?>
-                                                    </td>
-                                                    <td><?php echo date("Y-m-d H:i:s",$article['addtime']); ?></td>
-                                                    <td align="center">
-                                                        <?php if($article['show_status'] == 1): ?> 
-                                                        <img src="/shop/public/static/admin/images/right.png" height="20">  
+                                                        <?php if($brand['status'] == 1): ?>
+                                                        <img src="/shop/public/static/admin/images/right.png" height="20">
                                                         <?php else: ?>
                                                         <img src="/shop/public/static/admin/images/wrong.png" height="20">
                                                         <?php endif; ?>
                                                     </td>
                                                     <td align="center">
-                                                        <a href="<?php echo url('article/edit',array('id'=>$article['id'])); ?>" class="btn btn-primary btn-sm shiny">
+                                                        <a href="<?php echo url('edit',array('id'=>$brand['id'])); ?>" class="btn btn-primary btn-sm shiny">
                                                             <i class="fa fa-edit"></i> 编辑
                                                         </a>
-                                                        <a href="#" onClick="warning('确实要删除吗', '<?php echo url('article/del',array('id'=>$article['id'])); ?>')" class="btn btn-danger btn-sm shiny">
+                                                        <a href="#" onClick="warning('确实要删除吗', '<?php echo url('del',array('id'=>$brand['id'])); ?>')" class="btn btn-danger btn-sm shiny">
                                                             <i class="fa fa-trash-o"></i> 删除
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <?php endforeach; endif; else: echo "" ;endif; ?>  
+                                                <?php endforeach; endif; else: echo "" ;endif; ?>
                                             </tbody>
                                         </table>
                                     </div>
-                                     <div style="padding-top: 10px ; text-align: center;"> <?php echo $artRes->render(); ?></div>
+                                    <div style="padding-top: 10px ; text-align: center;"> <?php echo $brandRes->render(); ?></div>
                                 </div>
                             </div>
                         </div>

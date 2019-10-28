@@ -60,8 +60,11 @@
                                             <div class="form-group">
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">所属栏目</label>
                                                 <div class="col-sm-6">
-                                                    <select>
-                                                        <option>选择栏目</option>
+                                                    <select name="cate_id">
+                                                       {volist name="cateRes" id="cate"}
+                                                        <option  {in name="$cate['id']" value="0,1,2"} disabled="disabled" {/in} value="{$cate.id}">
+                                                            <?php echo str_repeat('-', $cate['level'] * 8); ?>{$cate.cate_name}</option>
+                                                        {/volist}
                                                     </select>
                                                 </div>
                                                 <p class="help-block col-sm-4 red">* 必填</p>
@@ -69,7 +72,7 @@
                                             <div class="form-group">
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">标题</label>
                                                 <div class="col-sm-6">
-                                                    <input class="form-control" placeholder="" name="brand_name" required="" type="text">
+                                                    <input class="form-control" placeholder="" name="title" required="" type="text">
                                                 </div>
                                                 <p class="help-block col-sm-4 red">* 必填</p>
                                             </div>
@@ -78,13 +81,13 @@
                                                 <div class="col-sm-6">
                                                     <div class="radio" style="float:left; padding-right:10px;">
                                                         <label>
-                                                            <input name="status" value="1" class="colored-blue" checked="checked" type="radio">
+                                                            <input name="show_top" value="1" class="colored-blue" checked="checked" type="radio">
                                                             <span class="text">是</span>
                                                         </label>
                                                     </div>
                                                     <div class="radio" style="float:left;">
                                                         <label>
-                                                            <input name="status" value="0" class="colored-blue" type="radio">
+                                                            <input name="show_top" value="0" class="colored-blue" type="radio">
                                                             <span class="text">否</span>
                                                         </label>
                                                     </div>
@@ -93,38 +96,38 @@
                                              <div class="form-group">
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">关键词</label>
                                                 <div class="col-sm-6">
-                                                    <textarea class="form-control" name="brand_description"></textarea>
+                                                    <textarea class="form-control" name="keyworks"></textarea>
                                                 </div>
                                             </div>
                                              <div class="form-group">
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">描述</label>
                                                 <div class="col-sm-6">
-                                                    <textarea class="form-control" name="brand_description"></textarea>
+                                                    <textarea class="form-control" name="description"></textarea>
                                                 </div>
                                             </div>
                                      
                                             <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">作者</label>
+                                                <label for="username" class="col-sm-2 control-label no-padding-right" >作者</label>
                                                 <div class="col-sm-6">
-                                                    <input class="form-control" placeholder="" name="brand_url" type="text">
+                                                    <input class="form-control" placeholder="" name="author" type="text">
                                                 </div>
                                             </div>
                                                <div class="form-group">
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">邮箱</label>
                                                 <div class="col-sm-6">
-                                                    <input class="form-control" placeholder="" name="brand_url" type="text">
+                                                    <input class="form-control" placeholder="" name="email" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">外联</label>
                                                 <div class="col-sm-6">
-                                                    <input class="form-control" placeholder="" name="brand_url" type="text">
+                                                    <input class="form-control" placeholder="" name="link_url" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">缩略图</label>
                                                 <div class="col-sm-6">
-                                                    <input placeholder="" name="brand_img" type="file">
+                                                    <input placeholder="" name="thumb" type="file">
                                                 </div>
                                             </div>
                                             <div class="form-group">

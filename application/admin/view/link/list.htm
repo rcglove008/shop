@@ -38,13 +38,13 @@
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
                         <li><a href="{:url('index/index')}">系统</a></li>
-                        <li class="active">文章管理</li>
+                        <li class="active">友情链接</li>
                     </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
                 <!-- Page Body -->
                 <div class="page-body">
-                    <button type="button" tooltip="添加文章" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url ('add')}'"> <i class="fa fa-plus"></i> Add
+                    <button type="button" tooltip="添加链接" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url ('Link/add')}'"> <i class="fa fa-plus"></i> Add
                     </button>
                     <div class="row">
                         <div class="col-lg-12 col-sm-12 col-xs-12">
@@ -55,61 +55,48 @@
                                             <thead class="">
                                                 <tr>
                                                     <th class="text-center" width="5%">ID</th>
-                                                    <th class="text-center" width="20%" >标题</th>
-                                                    <th class="text-center" width="10%">缩略图</th>
-                                                    <th class="text-center" width="6%">所属栏目</th>
-                                                    <th class="text-center" width="6%">跳转</th>
-                                                    <th class="text-center" width="4%">是否置顶</th>
-                                                    <th class="text-center" width="9%">发布时间</th>
-                                                    <th class="text-center" width="2%">显示状态</th>
-                                                    <th class="text-center" width="10%">操作</th>
+                                                    <th class="text-center">链接名称</th>
+                                                    <th>链接地址</th>
+                                                    <th class="text-center">链接LOGO</th>
+                                                    <th>链接描述</th>
+                                                    <th class="text-center" width="5%">状态</th>
+                                                    <th class="text-center" width="16%">操作</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {volist name="artRes" id="article"}
+                                                {volist name="linkRes" id="link"}
                                                 <tr>
-                                                    <td align="center">{$article.id}</td>
-                                                    <td align="left">{$article.title|cut_str=###,5}</td>
+                                                    <td align="center">{$link.id}</td>
+                                                    <td align="center">{$link.title}</td>
+                                                    <td><a href="{$link.link_url}" target="_blank">{$link.link_url}</a></td>
                                                     <td align="center">
-                                                        {if condition="$article['thumb'] neq ''"}
-                                                        <img src="__uploads__/{$article.thumb}" width="40px">
-                                                        {else/}
-                                                        暂无图片
+                                                        {if condition="$link['logo'] neq ''"}
+                                                        <img src="__uploads__/{$link.logo}" height="30">
+                                                        {else /}暂无图片
                                                         {/if}
                                                     </td>
-                                                    <td align="center">{$article.cate_name}</td>
-                                                    <td>
-                                                        {if condition="$article['link_url'] neq ''"}
-                                                        <a href="{$article.link_url}" target="_blank">{$article.link_url}</a>
-                                                        {else/}
-                                                        暂无链接
-                                                        {/if}
-                                                    </td>
+                                                    <td>{$link.description|cut_str=###,12}</td>
                                                     <td align="center">
-                                                        {if condition="$article['show_top'] eq 1"} 是 {else/} 否 {/if}
-                                                    </td>
-                                                    <td>{$article.addtime|date="Y-m-d H:i:s",###}</td>
-                                                    <td align="center">
-                                                        {if condition="$article['show_status'] eq 1"} 
-                                                        <img src="__admin__/images/right.png" height="20">  
-                                                        {else/}
+                                                        {if condition="$link['status'] eq 1 "}
+                                                        <img src="__admin__/images/right.png" height="20">
+                                                        {else /}
                                                         <img src="__admin__/images/wrong.png" height="20">
                                                         {/if}
                                                     </td>
                                                     <td align="center">
-                                                        <a href="{:url('article/edit',array('id'=>$article['id']))}" class="btn btn-primary btn-sm shiny">
+                                                        <a href="{:url('edit',array('id'=>$link['id']))}" class="btn btn-primary btn-sm shiny">
                                                             <i class="fa fa-edit"></i> 编辑
                                                         </a>
-                                                        <a href="#" onClick="warning('确实要删除吗', '{:url('article/del',array('id'=>$article['id']))}')" class="btn btn-danger btn-sm shiny">
+                                                        <a href="#" onClick="warning('确实要删除吗', '{:url('del',array('id'=>$link['id']))}')" class="btn btn-danger btn-sm shiny">
                                                             <i class="fa fa-trash-o"></i> 删除
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                {/volist}  
+                                                {/volist}
                                             </tbody>
                                         </table>
                                     </div>
-                                     <div style="padding-top: 10px ; text-align: center;"> {$artRes->render()}</div>
+                                    <div style="padding-top: 10px ; text-align: center;"> {$linkRes->render()}</div>
                                 </div>
                             </div>
                         </div>
