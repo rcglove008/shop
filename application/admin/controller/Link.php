@@ -86,7 +86,15 @@ class Link extends Controller
     }
     public function del($id)
     {
-        $del = db('link')->delete($id);
+        $linkObj=db('link');
+        $links=$linkObj->field('logo')->find($id);
+        if($links['logo']){
+            $linkImg=IMG_UPLOADS.$links['logo'];
+            if(file_exists($linkImg)){
+                @unlink($linkImg);
+            }
+        }
+        $del = $linkObj->delete($id);
         if ($del) {
             $this->success('删除链接成功', 'lst');
         } else {

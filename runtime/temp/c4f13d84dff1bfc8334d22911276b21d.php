@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:78:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\link\add.htm";i:1572187539;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572186302;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:78:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\link\add.htm";i:1572267537;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572186302;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -327,8 +327,8 @@
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
                         <li><a href="<?php echo url('index/index'); ?>">系统</a></li>
-                        <li><a href="<?php echo url('link/lst'); ?>"">品牌管理</a></li>
-                        <li class=" active">添加品牌</li>
+                        <li><a href="<?php echo url('link/lst'); ?>"">友情链接</a></li>
+                        <li class=" active">添加链接</li>
                     </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -338,38 +338,55 @@
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="widget">
                                 <div class="widget-header bordered-bottom bordered-blue">
-                                    <span class="widget-caption">新增品牌</span>
+                                    <span class="widget-caption">新增链接</span>
                                 </div>
                                 <div class="widget-body">
                                     <div id="horizontal-form">
                                         <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
                                             <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">品牌名称</label>
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">链接名称</label>
                                                 <div class="col-sm-6">
                                                     <input class="form-control" placeholder="" name="title" required="" type="text">
                                                 </div>
                                                 <p class="help-block col-sm-4 red">* 必填</p>
                                             </div>
                                             <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">品牌网址</label>
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">链接网址</label>
                                                 <div class="col-sm-6">
                                                     <input class="form-control" placeholder="" name="link_url" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">品牌logo</label>
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">链接logo</label>
                                                 <div class="col-sm-6">
                                                     <input placeholder="" name="logo" type="file">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">品牌描述</label>
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">链接描述</label>
                                                 <div class="col-sm-6">
                                                     <textarea class="form-control" name="description"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">品牌状态</label>
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">链接类型</label>
+                                                <div class="col-sm-6">
+                                                    <div class="radio" style="float:left; padding-right:10px;">
+                                                        <label>
+                                                            <input name="type" value="1" class="colored-blue" checked="checked" type="radio">
+                                                            <span class="text">图片链接</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio" style="float:left;">
+                                                        <label>
+                                                            <input name="type" value="0" class="colored-blue" type="radio">
+                                                            <span class="text">文字链接</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">链接状态</label>
                                                 <div class="col-sm-6">
                                                     <div class="radio" style="float:left; padding-right:10px;">
                                                         <label>

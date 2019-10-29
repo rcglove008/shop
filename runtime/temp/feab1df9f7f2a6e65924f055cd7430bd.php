@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\link\list.htm";i:1572187926;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572186302;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\link\list.htm";i:1572267459;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572270460;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -305,6 +305,33 @@
     <!--Dashboard-->
     <li>
         <a href="#" class="menu-dropdown">
+            <i class="menu-icon fa fa-link"></i>
+            <span class="menu-text">系统设置</span>
+            <i class="menu-expand"></i>
+        </a>
+        <ul class="submenu">
+            <li><a href="">
+                    <span class="menu-text">配置项</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+            <li><a href="<?php echo url('conf/lst'); ?>">
+                    <span class="menu-text">配置管理</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+             <li><a href="#">
+                    <span class="menu-text">支付方式设置</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<ul class="nav sidebar-menu">
+    <!--Dashboard-->
+    <li>
+        <a href="#" class="menu-dropdown">
             <i class="menu-icon fa fa-gear"></i>
             <span class="menu-text">数据库管理</span>
             <i class="menu-expand"></i>
@@ -348,7 +375,8 @@
                                                     <th>链接地址</th>
                                                     <th class="text-center">链接LOGO</th>
                                                     <th>链接描述</th>
-                                                    <th class="text-center" width="5%">状态</th>
+                                                    <th class="text-center" width="10%">链接类型</th>
+                                                     <th class="text-center" width="5%">状态</th>
                                                     <th class="text-center" width="16%">操作</th>
                                                 </tr>
                                             </thead>
@@ -365,6 +393,13 @@
                                                         <?php endif; ?>
                                                     </td>
                                                     <td><?php echo cut_str($link['description'],12); ?></td>
+                                                    <td align="center">
+                                                        <?php if($link['type'] == 1): ?>
+                                                        图片链接
+                                                        <?php else: ?>
+                                                        文字链接
+                                                        <?php endif; ?>
+                                                    </td>
                                                     <td align="center">
                                                         <?php if($link['status'] == 1): ?>
                                                         <img src="/shop/public/static/admin/images/right.png" height="20">

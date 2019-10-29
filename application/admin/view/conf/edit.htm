@@ -38,8 +38,8 @@
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
                         <li><a href="{:url('index/index')}">系统</a></li>
-                        <li><a href="{:url('link/lst')}"">友情链接</a></li>
-                        <li class=" active">添加链接</li>
+                        <li><a href="{:url('conf/lst')}"">系统管理</a></li>
+                    <li class=" active">修改系统</li>
                     </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -49,68 +49,59 @@
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="widget">
                                 <div class="widget-header bordered-bottom bordered-blue">
-                                    <span class="widget-caption">新增链接</span>
+                                    <span class="widget-caption">新增系统</span>
                                 </div>
                                 <div class="widget-body">
                                     <div id="horizontal-form">
                                         <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                                            <input type="hidden" name="id" value="{$confs.id}">
                                             <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">链接名称</label>
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">英文名称</label>
                                                 <div class="col-sm-6">
-                                                    <input class="form-control" placeholder="" name="title" required="" type="text">
+                                                    <input class="form-control" placeholder="" name="ename" required="" type="text" value="{$confs.ename}">
                                                 </div>
                                                 <p class="help-block col-sm-4 red">* 必填</p>
                                             </div>
                                             <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">链接网址</label>
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">中文名称</label>
                                                 <div class="col-sm-6">
-                                                    <input class="form-control" placeholder="" name="link_url" type="text">
+                                                    <input class="form-control" placeholder="" value="{$confs.cname}" name="cname" type="text">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">链接logo</label>
-                                                <div class="col-sm-6">
-                                                    <input placeholder="" name="logo" type="file">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">链接描述</label>
-                                                <div class="col-sm-6">
-                                                    <textarea class="form-control" name="description"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">链接类型</label>
-                                                <div class="col-sm-6">
-                                                    <div class="radio" style="float:left; padding-right:10px;">
-                                                        <label>
-                                                            <input name="type" value="1" class="colored-blue" checked="checked" type="radio">
-                                                            <span class="text">图片链接</span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="radio" style="float:left;">
-                                                        <label>
-                                                            <input name="type" value="0" class="colored-blue" type="radio">
-                                                            <span class="text">文字链接</span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                         
                                              <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">链接状态</label>
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">表单类型</label>
                                                 <div class="col-sm-6">
-                                                    <div class="radio" style="float:left; padding-right:10px;">
-                                                        <label>
-                                                            <input name="status" value="1" class="colored-blue" checked="checked" type="radio">
-                                                            <span class="text">显示</span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="radio" style="float:left;">
-                                                        <label>
-                                                            <input name="status" value="0" class="colored-blue" type="radio">
-                                                            <span class="text">隐藏</span>
-                                                        </label>
-                                                    </div>
+                                                   <select name="form_type">
+                                                        <option {if condition="$confs['form_type'] eq 'input'"} checked="checked" {/if} value="input">input</option>
+                                                        <option {if condition="$confs['form_type'] eq 'radion'"} checked="checked" {/if} value="radion">radion</option>
+                                                        <option {if condition="$confs['form_type'] eq 'checkbox'"} checked="checked" {/if} value="checkbox">checkbox</option>
+                                                        <option {if condition="$confs['form_type'] eq 'textarea'"} checked="checked" {/if} value="textarea">textarea</option>
+                                                        <option {if condition="$confs['form_type'] eq 'select'"} checked="checked" {/if} value="select">select</option>
+                                                   </select>
+                                                </div>
+                                            </div>
+                                               <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">配置类型</label>
+                                                <div class="col-sm-6">
+                                                    <select name="conf_type">
+                                                        <option {if condition="$confs['conf_type'] eq 1 "} checked="checked" {/if} value="1">店铺配置</option>
+                                                        <option {if condition="$confs['conf_type'] eq 2 "} checked="checked" {/if} value="2">商品配置</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        
+                                           <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">可选值</label>
+                                                <div class="col-sm-6">
+                                                   <textarea class="form-control" name="values" >{$confs.values}</textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">默认值</label>
+                                                <div class="col-sm-6">
+                                                   <input class="form-control" placeholder="" name="value" value="{$confs.value}" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -125,6 +116,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- /Page Body -->
                 <!-- /Page Body -->
             </div>
             <!-- /Page Content -->

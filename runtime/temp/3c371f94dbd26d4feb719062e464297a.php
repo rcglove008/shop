@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\link\edit.htm";i:1572188306;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572186302;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\link\edit.htm";i:1572267495;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572186302;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -371,6 +371,23 @@
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">链接描述</label>
                                                 <div class="col-sm-6">
                                                     <textarea class="form-control" name="description"><?php echo $links['description']; ?></textarea>
+                                                </div>
+                                            </div>
+                                              <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">链接类型</label>
+                                                <div class="col-sm-6">
+                                                    <div class="radio" style="float:left; padding-right:10px;">
+                                                        <label>
+                                                            <input name="type" value="1" class="colored-blue" {if condition="$links['type'] eq 1" } checked="checked" {/if } type="radio">
+                                                            <span class="text">图片显示</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio" style="float:left;">
+                                                        <label>
+                                                            <input name="type" value="0" class="colored-blue" <?php if($links['type'] == 0): ?> checked="checked" <?php endif; ?> type="radio">
+                                                            <span class="text">文字显示</span>
+                                                        </label>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">

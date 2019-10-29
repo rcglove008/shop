@@ -1,10 +1,10 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:81:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\index\index.htm";i:1571797334;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572186302;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\conf\list.htm";i:1572275718;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572270460;}*/ ?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>商城</title>
+    <title>ThinkPHP</title>
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,7 +84,7 @@
         <div class="page-container">
             <!-- Page Sidebar -->
             <div class="page-sidebar" id="sidebar">
-                <!-- Page Sidebar Header-->
+                <!-- Sidebar Menu -->
                 <div class="sidebar-header-wrapper">
     <input class="searchinput" type="text">
     <i class="searchicon fa fa-search"></i>
@@ -305,6 +305,33 @@
     <!--Dashboard-->
     <li>
         <a href="#" class="menu-dropdown">
+            <i class="menu-icon fa fa-link"></i>
+            <span class="menu-text">系统设置</span>
+            <i class="menu-expand"></i>
+        </a>
+        <ul class="submenu">
+            <li><a href="">
+                    <span class="menu-text">配置项</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+            <li><a href="<?php echo url('conf/lst'); ?>">
+                    <span class="menu-text">配置管理</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+             <li><a href="#">
+                    <span class="menu-text">支付方式设置</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<ul class="nav sidebar-menu">
+    <!--Dashboard-->
+    <li>
+        <a href="#" class="menu-dropdown">
             <i class="menu-icon fa fa-gear"></i>
             <span class="menu-text">数据库管理</span>
             <i class="menu-expand"></i>
@@ -326,15 +353,64 @@
                 <!-- Page Breadcrumb -->
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
-                        <li class="active">控制面板</li>
+                        <li><a href="<?php echo url('index/index'); ?>">系统</a></li>
+                        <li class="active">配置管理</li>
                     </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
                 <!-- Page Body -->
                 <div class="page-body">
-                    <div style="text-align:center; line-height:1000%; font-size:24px;">
-                        实战开发大型B2C商城项目<br />
-                        <p style="color:#f00;">ThinkPHP交流群</p>
+                    <button type="button" tooltip="添加品牌" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '<?php echo url ('add'); ?>'"> <i class="fa fa-plus"></i> Add
+                    </button>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="widget">
+                                <div class="widget-body">
+                                    <div class="flip-scroll">
+                                        <table class="table table-bordered table-hover">
+                                            <thead class="">
+                                                <tr>
+                                                    <th class="text-center" width="5%">ID</th>
+                                                    <th class="text-center">英文名称</th>
+                                                    <th class="text-center" width="10%" >中文名称</th>
+                                                    <th class="text-center">表单类型</th>
+                                                    <th class="text-center">配置类型</th>
+                                                    <th class="text-center" >默认值</th>
+                                                    <th  class="text-center" width="6%">可选值</th>
+                                                    <th class="text-center" width="16%">操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                   <?php if(is_array($confRes) || $confRes instanceof \think\Collection || $confRes instanceof \think\Paginator): $i = 0; $__LIST__ = $confRes;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$conf): $mod = ($i % 2 );++$i;?>
+                                                <tr>
+                                                     <td align="center"><?php echo $conf['id']; ?></td>
+                                                     <td align="center"><?php echo $conf['ename']; ?></td>
+                                                     <td align="center"><?php echo $conf['cname']; ?></td>
+                                                     <td align="center"><?php echo $conf['form_type']; ?></td>
+                                                     <td align="center">
+                                                         <?php if($conf['conf_type'] == 1): ?> 店铺配置 
+                                                         <?php else: ?>商品配置
+                                                         <?php endif; ?>
+                                                     </td>
+                                                      <td align="center"><?php echo $conf['values']; ?></td>
+                                                       <td align="center"><?php echo $conf['value']; ?></td>
+                                                     <td align="center">
+                                                        <a href="<?php echo url('edit',array('id'=>$conf['id'])); ?>" class="btn btn-primary btn-sm shiny">
+                                                            <i class="fa fa-edit"></i> 编辑
+                                                        </a>
+                                                        <a href="#" onClick="warning('确实要删除吗', '<?php echo url('del',array('id'=>$conf['id'])); ?>')" class="btn btn-danger btn-sm shiny">
+                                                            <i class="fa fa-trash-o"></i> 删除
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                             <?php endforeach; endif; else: echo "" ;endif; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div style="padding-top: 10px ; text-align: center;"> <?php echo $confRes->render(); ?></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
