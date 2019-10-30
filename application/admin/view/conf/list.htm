@@ -51,16 +51,18 @@
                             <div class="widget">
                                 <div class="widget-body">
                                     <div class="flip-scroll">
+                                        <form action="" method="post">
                                         <table class="table table-bordered table-hover">
                                             <thead class="">
                                                 <tr>
                                                     <th class="text-center" width="5%">ID</th>
                                                     <th class="text-center">英文名称</th>
-                                                    <th class="text-center" width="10%" >中文名称</th>
-                                                    <th class="text-center">表单类型</th>
-                                                    <th class="text-center">配置类型</th>
-                                                    <th class="text-center" >默认值</th>
-                                                    <th  class="text-center" width="6%">可选值</th>
+                                                    <th class="text-center">中文名称</th>
+                                                    <th class="text-center" width="10%">表单类型</th>
+                                                    <th class="text-center" width="10%">配置类型</th>
+                                                    <th class="text-center" width="6%">默认值</th>
+                                                    <th  class="text-center" >可选值</th>
+                                                    <th  class="text-center" width="5%">排序</th>
                                                     <th class="text-center" width="16%">操作</th>
                                                 </tr>
                                             </thead>
@@ -76,8 +78,11 @@
                                                          {else /}商品配置
                                                          {/if}
                                                      </td>
-                                                      <td align="center">{$conf.values}</td>
-                                                       <td align="center">{$conf.value}</td>
+                                                     <td align="center">{$conf.values}</td>
+                                                     <td >{$conf.value}</td>
+                                                    <td align="center">
+                                                    <input class="text-center" type="text" style="width: 60px" name="sort[{$conf.id}]" value="{$conf.sort}">
+                                                    </td>
                                                      <td align="center">
                                                         <a href="{:url('edit',array('id'=>$conf['id']))}" class="btn btn-primary btn-sm shiny">
                                                             <i class="fa fa-edit"></i> 编辑
@@ -85,11 +90,15 @@
                                                         <a href="#" onClick="warning('确实要删除吗', '{:url('del',array('id'=>$conf['id']))}')" class="btn btn-danger btn-sm shiny">
                                                             <i class="fa fa-trash-o"></i> 删除
                                                         </a>
-                                                    </td>
+                                                    </td>  
+                                                    {/volist}
+                                                  <tr>
+                                                       <td colspan="9" align="right" style="padding-right: 17% "><input class="btn btn-primary  btn-sm shiny" type="submit" value="排序" /></td>
+                                                 </tr>
                                                 </tr>
-                                             {/volist}
                                             </tbody>
                                         </table>
+                                    </form>
                                     </div>
                                     <div style="padding-top: 10px ; text-align: center;"> {$confRes->render()}</div>
                                 </div>

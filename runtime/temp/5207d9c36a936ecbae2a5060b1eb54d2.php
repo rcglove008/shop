@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\conf\list.htm";i:1572275718;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572270460;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\conf\list.htm";i:1572354100;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572355442;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -310,7 +310,7 @@
             <i class="menu-expand"></i>
         </a>
         <ul class="submenu">
-            <li><a href="">
+            <li><a href="<?php echo url('conf/conflist'); ?>">
                     <span class="menu-text">配置项</span>
                     <i class="menu-expand"></i>
                 </a>
@@ -367,16 +367,18 @@
                             <div class="widget">
                                 <div class="widget-body">
                                     <div class="flip-scroll">
+                                        <form action="" method="post">
                                         <table class="table table-bordered table-hover">
                                             <thead class="">
                                                 <tr>
                                                     <th class="text-center" width="5%">ID</th>
                                                     <th class="text-center">英文名称</th>
-                                                    <th class="text-center" width="10%" >中文名称</th>
-                                                    <th class="text-center">表单类型</th>
-                                                    <th class="text-center">配置类型</th>
-                                                    <th class="text-center" >默认值</th>
-                                                    <th  class="text-center" width="6%">可选值</th>
+                                                    <th class="text-center">中文名称</th>
+                                                    <th class="text-center" width="10%">表单类型</th>
+                                                    <th class="text-center" width="10%">配置类型</th>
+                                                    <th class="text-center" width="6%">默认值</th>
+                                                    <th  class="text-center" >可选值</th>
+                                                    <th  class="text-center" width="5%">排序</th>
                                                     <th class="text-center" width="16%">操作</th>
                                                 </tr>
                                             </thead>
@@ -392,8 +394,11 @@
                                                          <?php else: ?>商品配置
                                                          <?php endif; ?>
                                                      </td>
-                                                      <td align="center"><?php echo $conf['values']; ?></td>
-                                                       <td align="center"><?php echo $conf['value']; ?></td>
+                                                     <td align="center"><?php echo $conf['values']; ?></td>
+                                                     <td ><?php echo $conf['value']; ?></td>
+                                                    <td align="center">
+                                                    <input class="text-center" type="text" style="width: 60px" name="sort[<?php echo $conf['id']; ?>]" value="<?php echo $conf['sort']; ?>">
+                                                    </td>
                                                      <td align="center">
                                                         <a href="<?php echo url('edit',array('id'=>$conf['id'])); ?>" class="btn btn-primary btn-sm shiny">
                                                             <i class="fa fa-edit"></i> 编辑
@@ -401,11 +406,15 @@
                                                         <a href="#" onClick="warning('确实要删除吗', '<?php echo url('del',array('id'=>$conf['id'])); ?>')" class="btn btn-danger btn-sm shiny">
                                                             <i class="fa fa-trash-o"></i> 删除
                                                         </a>
-                                                    </td>
+                                                    </td>  
+                                                    <?php endforeach; endif; else: echo "" ;endif; ?>
+                                                  <tr>
+                                                       <td colspan="9" align="right" style="padding-right: 17% "><input class="btn btn-primary  btn-sm shiny" type="submit" value="排序" /></td>
+                                                 </tr>
                                                 </tr>
-                                             <?php endforeach; endif; else: echo "" ;endif; ?>
                                             </tbody>
                                         </table>
+                                    </form>
                                     </div>
                                     <div style="padding-top: 10px ; text-align: center;"> <?php echo $confRes->render(); ?></div>
                                 </div>

@@ -49,7 +49,7 @@
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="widget">
                                 <div class="widget-header bordered-bottom bordered-blue">
-                                    <span class="widget-caption">新增系统</span>
+                                    <span class="widget-caption">修改系统</span>
                                 </div>
                                 <div class="widget-body">
                                     <div id="horizontal-form">
@@ -73,11 +73,12 @@
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">表单类型</label>
                                                 <div class="col-sm-6">
                                                    <select name="form_type">
-                                                        <option {if condition="$confs['form_type'] eq 'input'"} checked="checked" {/if} value="input">input</option>
-                                                        <option {if condition="$confs['form_type'] eq 'radion'"} checked="checked" {/if} value="radion">radion</option>
-                                                        <option {if condition="$confs['form_type'] eq 'checkbox'"} checked="checked" {/if} value="checkbox">checkbox</option>
-                                                        <option {if condition="$confs['form_type'] eq 'textarea'"} checked="checked" {/if} value="textarea">textarea</option>
-                                                        <option {if condition="$confs['form_type'] eq 'select'"} checked="checked" {/if} value="select">select</option>
+                                                        <option {if condition="$confs['form_type'] eq 'input'"} selected="selected"{/if} value="input">input</option>
+                                                        <option {if condition="$confs['form_type'] eq 'radion'"} selected="selected" {/if} value="radion">radion</option>
+                                                        <option {if condition="$confs['form_type'] eq 'checkbox'"} selected="selected" {/if} value="checkbox">checkbox</option>
+                                                        <option {if condition="$confs['form_type'] eq 'textarea'"} selected="selected" {/if} value="textarea">textarea</option>
+                                                        <option {if condition="$confs['form_type'] eq 'select'"} selected="selected" {/if} value="select">select</option>
+                                                         <option {if condition="$confs['form_type'] eq 'file'"} selected="selected" {/if} value="select">file</option>
                                                    </select>
                                                 </div>
                                             </div>
@@ -92,7 +93,7 @@
                                             </div>
                                         
                                            <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">可选值</label>
+                                                <label for="username" class="col-sm-2 control-label no-padding-left">可选值</label>
                                                 <div class="col-sm-6">
                                                    <textarea class="form-control" name="values" >{$confs.values}</textarea>
                                                 </div>

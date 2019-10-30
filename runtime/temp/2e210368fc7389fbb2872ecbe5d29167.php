@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\conf\edit.htm";i:1572351145;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572355442;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:83:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\conf\conflist.htm";i:1572361628;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572355442;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -354,86 +354,93 @@
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
                         <li><a href="<?php echo url('index/index'); ?>">系统</a></li>
-                        <li><a href="<?php echo url('conf/lst'); ?>"">系统管理</a></li>
-                    <li class=" active">修改系统</li>
+                        <li><a href="<?php echo url('conf/lst'); ?>"">配置管理</a></li>
+                    <li class=" active">配置列表</li>
                     </ul>
                 </div>
-                <!-- /Page Breadcrumb -->
+
                 <!-- Page Body -->
                 <div class="page-body">
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-12 col-xs-12">
-                            <div class="widget">
-                                <div class="widget-header bordered-bottom bordered-blue">
-                                    <span class="widget-caption">修改系统</span>
-                                </div>
-                                <div class="widget-body">
-                                    <div id="horizontal-form">
-                                        <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
-                                            <input type="hidden" name="id" value="<?php echo $confs['id']; ?>">
-                                            <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">英文名称</label>
-                                                <div class="col-sm-6">
-                                                    <input class="form-control" placeholder="" name="ename" required="" type="text" value="<?php echo $confs['ename']; ?>">
-                                                </div>
-                                                <p class="help-block col-sm-4 red">* 必填</p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">中文名称</label>
-                                                <div class="col-sm-6">
-                                                    <input class="form-control" placeholder="" value="<?php echo $confs['cname']; ?>" name="cname" type="text">
-                                                </div>
-                                            </div>
-                                         
-                                             <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">表单类型</label>
-                                                <div class="col-sm-6">
-                                                   <select name="form_type">
-                                                        <option <?php if($confs['form_type'] == 'input'): ?> selected="selected"<?php endif; ?> value="input">input</option>
-                                                        <option <?php if($confs['form_type'] == 'radion'): ?> selected="selected" <?php endif; ?> value="radion">radion</option>
-                                                        <option <?php if($confs['form_type'] == 'checkbox'): ?> selected="selected" <?php endif; ?> value="checkbox">checkbox</option>
-                                                        <option <?php if($confs['form_type'] == 'textarea'): ?> selected="selected" <?php endif; ?> value="textarea">textarea</option>
-                                                        <option <?php if($confs['form_type'] == 'select'): ?> selected="selected" <?php endif; ?> value="select">select</option>
-                                                         <option <?php if($confs['form_type'] == 'file'): ?> selected="selected" <?php endif; ?> value="select">file</option>
-                                                   </select>
-                                                </div>
-                                            </div>
-                                               <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">配置类型</label>
-                                                <div class="col-sm-6">
-                                                    <select name="conf_type">
-                                                        <option <?php if($confs['conf_type'] == 1): ?> checked="checked" <?php endif; ?> value="1">店铺配置</option>
-                                                        <option <?php if($confs['conf_type'] == 2): ?> checked="checked" <?php endif; ?> value="2">商品配置</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        
-                                           <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-left">可选值</label>
-                                                <div class="col-sm-6">
-                                                   <textarea class="form-control" name="values" ><?php echo $confs['values']; ?></textarea>
-                                                </div>
-                                            </div>
+                <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="widget">
+                <!-- 配置列表开始-->
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs  tabs-flat" id="myTab11">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#home11">
+                                        店 铺 配 置
+                                    </a>
+                                </li>
+                                 <li class="">
+                                    <a data-toggle="tab" href="#profile11">
+                                        商 品 配 置
+                                    </a>
+                                </li>
+                            </ul>
 
-                                            <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">默认值</label>
-                                                <div class="col-sm-6">
-                                                   <input class="form-control" placeholder="" name="value" value="<?php echo $confs['value']; ?>" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-offset-2 col-sm-10">
-                                                    <button type="submit" class="btn btn-default">保存信息</button>
-                                                </div>
-                                            </div>
-                                        </form>
+                            <div class="tab-content tabs-flat">
+                                <div id="home11" class="tab-pane active">
+                                <div id="horizontal-form">
+                                <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                                <?php foreach ($ShopConfRes as $k => $conf): ?>
+                                <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label no-padding-right"><?php echo $conf['cname']; ?></label>
+                                <div class="col-sm-6">
+                                <?php if ($conf['form_type'] == 'input'): ?>
+                                <!-- 单行文本 -->
+                                <input class="form-control" placeholder="" name="cname" type="text" value="1">
+                                <?php elseif ($conf['form_type'] == 'textarea'): ?>
+                                <!-- 文本域-->
+                                <input class="form-control" placeholder="" name="cname" type="text" value="1">
+                                <?php elseif ($conf['form_type'] == 'radion'): ?>
+                                <!-- 单选-->
+                                <input class="form-control" placeholder="" name="cname" type="text" value="1">
+                                <?php elseif ($conf['form_type'] == 'select'): ?>
+                                <!-- 下拉菜单-->
+                                <input  placeholder="" name="cname" type="file" value="1">
+                                <?php elseif ($conf['form_type'] == 'checkbox'): ?>
+                                <!-- 复选框-->
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="colored-blue" checked="checked" name="">
+                                        <span class="text">Bule</span>
+                                    </label>
+                                     <label>
+                                        <input type="checkbox" class="colored-blue" checked="checked" name="">
+                                        <span class="text">Bule</span>
+                                    </label>
+                                </div>
+                                <?php elseif($conf['form_type']=='file'):?>
+                                    <!-- 文件上传 -->
+                                        <input  name="canme" placeholder="" type="file">
+                                <?php endif;?>
+                                </div>
+                                </div>
+                               <?php endforeach;?>
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-default">保存信息</button>
                                     </div>
                                 </div>
+                                </form>
+                                </div>
+                                </div>
+                                <div id="profile11" class="tab-pane">
+                                    <p>33333</p>
+                                </div>
+                            </div>
+                         </div>
+                     </div>
+                  </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- /Page Body -->
                 <!-- /Page Body -->
             </div>
             <!-- /Page Content -->
