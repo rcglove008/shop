@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:83:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\conf\conflist.htm";i:1572361628;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572355442;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:83:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\conf\conflist.htm";i:1572441808;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572355442;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -381,54 +381,73 @@
                                 </li>
                             </ul>
 
-                            <div class="tab-content tabs-flat">
-                                <div id="home11" class="tab-pane active">
-                                <div id="horizontal-form">
-                                <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
-                                <?php foreach ($ShopConfRes as $k => $conf): ?>
-                                <div class="form-group">
-                                <label for="username" class="col-sm-2 control-label no-padding-right"><?php echo $conf['cname']; ?></label>
-                                <div class="col-sm-6">
-                                <?php if ($conf['form_type'] == 'input'): ?>
-                                <!-- 单行文本 -->
-                                <input class="form-control" placeholder="" name="cname" type="text" value="1">
-                                <?php elseif ($conf['form_type'] == 'textarea'): ?>
-                                <!-- 文本域-->
-                                <input class="form-control" placeholder="" name="cname" type="text" value="1">
-                                <?php elseif ($conf['form_type'] == 'radion'): ?>
-                                <!-- 单选-->
-                                <input class="form-control" placeholder="" name="cname" type="text" value="1">
-                                <?php elseif ($conf['form_type'] == 'select'): ?>
-                                <!-- 下拉菜单-->
-                                <input  placeholder="" name="cname" type="file" value="1">
-                                <?php elseif ($conf['form_type'] == 'checkbox'): ?>
-                                <!-- 复选框-->
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" class="colored-blue" checked="checked" name="">
-                                        <span class="text">Bule</span>
-                                    </label>
-                                     <label>
-                                        <input type="checkbox" class="colored-blue" checked="checked" name="">
-                                        <span class="text">Bule</span>
-                                    </label>
-                                </div>
-                                <?php elseif($conf['form_type']=='file'):?>
-                                    <!-- 文件上传 -->
-                                        <input  name="canme" placeholder="" type="file">
-                                <?php endif;?>
-                                </div>
-                                </div>
-                               <?php endforeach;?>
+                    <div class="tab-content tabs-flat">
+                        <div id="home11" class="tab-pane active">
+                        <div id="horizontal-form">
+                        <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        <?php foreach ($ShopConfRes as $k => $conf): ?>
+                        <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label no-padding-right"><?php echo $conf['cname']; ?></label>
+                        <div class="col-sm-6">
+                        <?php if ($conf['form_type'] == 'input'): ?>
+                        <!-- 单行文本 -->
+                        <input class="form-control" placeholder="" name="cname" type="text" >
+                        <?php elseif ($conf['form_type'] == 'textarea'): ?>
+                        <!-- 文本域-->
+                        <textarea class="form-control"  name="value" >11</textarea>
+                        <?php elseif ($conf['form_type'] == 'radion'): ?>
+                        <!-- 单选-->
+                        <div class="radio">
+                        <label>
+                        <input type="radio" class="colored-blue"  name="form_field_radio">
+                        <span class="text" >phone </span>
+                        </label>
+                        <label>
+                        <input type="radio" class="colored-blue"  name="form_field_radio">
+                        <span class="text" >phone </span>
+                        </label>
+                        </div>
+                        <?php elseif ($conf['form_type'] == 'select'): ?>
+                        <!-- 下拉菜单-->
+                        <select>
+                          <option value="">下拉菜单</option>
+                        </select>
+                         <?php elseif ($conf['form_type'] == 'select'): ?>
+                        <!-- 下拉菜单-->
+                        <select>
+                          <option value="">下拉菜单</option>
+                        </select>
+                        <?php elseif ($conf['form_type'] == 'checkbox'): ?>
+                        <!-- 复选框-->
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" class="colored-blue" checked="checked" name="">
+                                <span class="text">Bule</span>
+                            </label>
+                             <label>
+                                <input type="checkbox" class="colored-blue" checked="checked" name="">
+                                <span class="text">Bule</span>
+                            </label>
+                        </div>
+                        <?php elseif($conf['form_type']=='file'):?>
+                        <input name="canme" placeholder="" type="file">
+                        <!-- 上传文件 -->
+                        <?php endif;?>
+                        </div>
+                        </div>
+                       <?php endforeach;?>
 
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-default">保存信息</button>
-                                    </div>
-                                </div>
-                                </form>
-                                </div>
-                                </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">保存信息</button>
+                            </div>
+                        </div>
+                        </form>
+                        </div>
+                        </div>
+
+
+
                                 <div id="profile11" class="tab-pane">
                                     <p>33333</p>
                                 </div>

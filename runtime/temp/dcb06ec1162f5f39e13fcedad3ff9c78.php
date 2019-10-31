@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:81:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\index\index.htm";i:1571797334;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572186302;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:81:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\index\index.htm";i:1571797334;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572355442;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -295,6 +295,33 @@
         <ul class="submenu">
             <li><a href="<?php echo url('link/lst'); ?>">
                     <span class="menu-text">链接列表</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<ul class="nav sidebar-menu">
+    <!--Dashboard-->
+    <li>
+        <a href="#" class="menu-dropdown">
+            <i class="menu-icon fa fa-link"></i>
+            <span class="menu-text">系统设置</span>
+            <i class="menu-expand"></i>
+        </a>
+        <ul class="submenu">
+            <li><a href="<?php echo url('conf/conflist'); ?>">
+                    <span class="menu-text">配置项</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+            <li><a href="<?php echo url('conf/lst'); ?>">
+                    <span class="menu-text">配置管理</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+             <li><a href="#">
+                    <span class="menu-text">支付方式设置</span>
                     <i class="menu-expand"></i>
                 </a>
             </li>

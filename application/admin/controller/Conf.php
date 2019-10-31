@@ -28,7 +28,7 @@ class Conf extends Controller
             $this->success('排序成功');
         }
 
-        $confRes = $conf->order('sort DESC')->paginate(6);
+        $confRes = $conf->order('sort DESC')->paginate(10);
 
         $this->assign([
             'confRes' => $confRes,

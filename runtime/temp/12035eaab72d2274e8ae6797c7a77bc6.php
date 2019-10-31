@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:78:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\conf\add.htm";i:1572273372;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572270460;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:78:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\conf\add.htm";i:1572355269;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572355442;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -310,7 +310,7 @@
             <i class="menu-expand"></i>
         </a>
         <ul class="submenu">
-            <li><a href="">
+            <li><a href="<?php echo url('conf/conflist'); ?>">
                     <span class="menu-text">配置项</span>
                     <i class="menu-expand"></i>
                 </a>
@@ -365,7 +365,7 @@
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="widget">
                                 <div class="widget-header bordered-bottom bordered-blue">
-                                    <span class="widget-caption">新增品牌</span>
+                                    <span class="widget-caption">新增配置</span>
                                 </div>
                                 <div class="widget-body">
                                     <div id="horizontal-form">
@@ -393,6 +393,7 @@
                                                         <option value="checkbox">checkbox</option>
                                                         <option value="textarea">textarea</option>
                                                         <option value="select">select</option>
+                                                        <option value="file">file</option>
                                                    </select>
                                                 </div>
                                             </div>

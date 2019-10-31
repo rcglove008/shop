@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\conf\edit.htm";i:1572351145;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572355442;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\conf\edit.htm";i:1572441658;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572355442;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -394,7 +394,7 @@
                                                         <option <?php if($confs['form_type'] == 'checkbox'): ?> selected="selected" <?php endif; ?> value="checkbox">checkbox</option>
                                                         <option <?php if($confs['form_type'] == 'textarea'): ?> selected="selected" <?php endif; ?> value="textarea">textarea</option>
                                                         <option <?php if($confs['form_type'] == 'select'): ?> selected="selected" <?php endif; ?> value="select">select</option>
-                                                         <option <?php if($confs['form_type'] == 'file'): ?> selected="selected" <?php endif; ?> value="select">file</option>
+                                                         <option <?php if($confs['form_type'] == 'file'): ?> selected="selected" <?php endif; ?> value="file">file</option>
                                                    </select>
                                                 </div>
                                             </div>
