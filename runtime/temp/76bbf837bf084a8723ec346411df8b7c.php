@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:81:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\index\index.htm";i:1573603895;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1573560796;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:83:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\category\edit.htm";i:1573050994;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1573045200;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -83,9 +83,9 @@
     <div class="main-container container-fluid">
         <div class="page-container">
             <!-- Page Sidebar -->
-            <div class="page-sidebar" id="sidebar">
-                <!-- Page Sidebar Header-->
-                <div class="sidebar-header-wrapper">
+        <div class="page-sidebar" id="sidebar">
+            <!-- Sidebar Menu -->
+            <div class="sidebar-header-wrapper">
     <input class="searchinput" type="text">
     <i class="searchicon fa fa-search"></i>
     <div class="searchhelper">Search Reports, Charts, Emails or Notifications</div>
@@ -109,18 +109,17 @@
                     <i class="menu-expand"></i>
                 </a>
             </li>
-           
+            <li><a href="<?php echo url ('category/add'); ?>">
+                    <span class="menu-text">商品分类</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
             <li><a href="<?php echo url ('brand/lst'); ?>">
                     <span class="menu-text">商品品牌</span>
                     <i class="menu-expand"></i>
                 </a>
             </li>
-             <li><a href="<?php echo url ('category/lst'); ?>">
-                    <span class="menu-text">商品分类</span>
-                    <i class="menu-expand"></i>
-                </a>
-            </li>
-            <li><a href="<?php echo url ('Type/lst'); ?>">
+            <li><a href="#">
                     <span class="menu-text">商品类型</span>
                     <i class="menu-expand"></i>
                 </a>
@@ -346,29 +345,108 @@
         </ul>
     </li>
 </ul>
-                <!-- /Sidebar Menu -->
-            </div>
+            <!-- /Sidebar Menu -->
+        </div>
             <!-- /Page Sidebar -->
             <!-- Page Content -->
-            <div class="page-content">
+        <div class="page-content">
                 <!-- Page Breadcrumb -->
-                <div class="page-breadcrumbs">
-                    <ul class="breadcrumb">
-                        <li class="active">控制面板</li>
-                    </ul>
-                </div>
+        <div class="page-breadcrumbs">
+            <ul class="breadcrumb">
+                <li><a href="<?php echo url('index/index'); ?>">系统</a></li>
+                <li><a href="<?php echo url('category/lst'); ?>"">商品分类管理</a></li>
+            <li class=" active">修改商品分类</li>
+            </ul>
+        </div>
                 <!-- /Page Breadcrumb -->
                 <!-- Page Body -->
-                <div class="page-body">
-                    <div style="text-align:center; line-height:1000%; font-size:24px;">
-                        实战开发大型B2C商城项目<br />
-                        <p style="color:#f00;">ThinkPHP交流群</p>
+    <div class="page-body">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="widget">
+                    <div class="widget-header bordered-bottom bordered-blue">
+                        <span class="widget-caption">修改商品分类</span>
+                    </div>
+                    <div class="widget-body">
+                        <div id="horizontal-form">
+                            <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="id" value="<?php echo $Categorys['id']; ?>">
+                                <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label no-padding-right">上级分类</label>
+                                <div class="col-sm-6">
+                                    <select class="form-control" name="pid">
+                                    <option value="0">顶级分类</option>
+                                   <?php if(is_array($CategoryRes) || $CategoryRes instanceof \think\Collection || $CategoryRes instanceof \think\Paginator): $i = 0; $__LIST__ = $CategoryRes;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$cate): $mod = ($i % 2 );++$i;?>
+                                    <option <?php if($Categorys['pid'] == $cate['id']): ?> selected="selected"<?php endif; ?> value="<?php echo $cate['id']; ?>">
+                                        <?php echo str_repeat('-', $cate['level'] * 8); ?><?php echo $cate['cate_name']; ?></option>
+                                    <?php endforeach; endif; else: echo "" ;endif; ?>
+                                    </select>
+                                </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">分类名称</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" placeholder="" name="cate_name" required="" type="text" value="<?php echo $Categorys['cate_name']; ?>">
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">显示到导航</label>
+                                    <div class="col-sm-6">
+                                        <div class="radio" style="float:left; padding-right:10px;">
+                                            <label>
+                                                <input name="show_cate" value="<?php echo $Categorys['show_cate']; ?>" class="colored-blue" type="radio">
+                                                <span class="text">显示</span>
+                                            </label>
+                                        </div>
+                                        <div class="radio" style="float:left;">
+                                            <label>
+                                                <input name="show_cate" value="<?php echo $Categorys['show_cate']; ?>" class="colored-blue" checked="checked" type="radio">
+                                                <span class="text">隐藏</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">缩略图</label>
+                                    <div class="col-sm-6">
+                                    <input placeholder="" name="cate_img" type="file">
+                                    <?php if($Categorys['cate_img']): ?>
+                                    <img src="/shop/public/static/uploads/<?php echo $Categorys['cate_img']; ?>" height="40px">
+                                    <?php else: ?>
+                                    暂无缩略图
+                                    <?php endif; ?>
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">关键词</label>
+                                    <div class="col-sm-6">
+                                        <textarea class="form-control" name="keywords"><?php echo $Categorys['keywords']; ?></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">文章描述</label>
+                                    <div class="col-sm-6">
+                                        <textarea class="form-control" name="description"><?php echo $Categorys['description']; ?></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-default">保存信息</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- /Page Body -->
         </div>
-        <!-- /Page Content -->
+    </div>
+            <!-- /Page Body -->
+    </div>
+            <!-- /Page Content -->
     </div>
     </div>
     <!--Basic Scripts-->

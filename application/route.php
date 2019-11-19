@@ -8,6 +8,14 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
+use think\Route;
+//api.shop.com==>www.shop.com/index.php/api
+
+Route::domain('api','api');
+//api.tp5.com/user/2==>tp5.com/index/api/user/index/id/2
+Route::rule('user/:id','user/index');
+
+Route::post('user','user/login');
 
 return [
     '__pattern__' => [

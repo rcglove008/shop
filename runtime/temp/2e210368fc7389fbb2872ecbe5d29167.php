@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:83:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\conf\conflist.htm";i:1572441808;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572355442;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:83:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\conf\conflist.htm";i:1572963020;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1573560796;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -109,17 +109,18 @@
                     <i class="menu-expand"></i>
                 </a>
             </li>
-            <li><a href="#">
-                    <span class="menu-text">商品分类</span>
-                    <i class="menu-expand"></i>
-                </a>
-            </li>
+           
             <li><a href="<?php echo url ('brand/lst'); ?>">
                     <span class="menu-text">商品品牌</span>
                     <i class="menu-expand"></i>
                 </a>
             </li>
-            <li><a href="#">
+             <li><a href="<?php echo url ('category/lst'); ?>">
+                    <span class="menu-text">商品分类</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+            <li><a href="<?php echo url ('Type/lst'); ?>">
                     <span class="menu-text">商品类型</span>
                     <i class="menu-expand"></i>
                 </a>
@@ -358,104 +359,176 @@
                     <li class=" active">配置列表</li>
                     </ul>
                 </div>
-
                 <!-- Page Body -->
-                <div class="page-body">
-                <div class="row">
-                <div class="col-lg-12 col-sm-12 col-xs-12">
-                <div class="widget">
+<div class="page-body">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="widget">
                 <!-- 配置列表开始-->
                 <div class="widget-body">
                     <div class="widget-main">
                         <div class="tabbable">
-                            <ul class="nav nav-tabs  tabs-flat" id="myTab11">
-                                <li class="active">
-                                    <a data-toggle="tab" href="#home11">
-                                        店 铺 配 置
-                                    </a>
-                                </li>
-                                 <li class="">
-                                    <a data-toggle="tab" href="#profile11">
-                                        商 品 配 置
-                                    </a>
-                                </li>
-                            </ul>
-
-                    <div class="tab-content tabs-flat">
-                        <div id="home11" class="tab-pane active">
-                        <div id="horizontal-form">
-                        <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
-                        <?php foreach ($ShopConfRes as $k => $conf): ?>
-                        <div class="form-group">
-                        <label for="username" class="col-sm-2 control-label no-padding-right"><?php echo $conf['cname']; ?></label>
+    <ul class="nav nav-tabs  tabs-flat" id="myTab11">
+        <li class="active">
+            <a data-toggle="tab" href="#home11">
+                店 铺 配 置
+            </a>
+        </li>
+        <li class="">
+            <a data-toggle="tab" href="#profile11">
+                商 品 配 置
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content tabs-flat">
+        <div id="home11" class="tab-pane active">
+            <div id="horizontal-form">
+                <form class="form-horizontal"  action="" method="post" enctype="multipart/form-data">
+                    <?php foreach ($ShopConfRes as $k => $conf): ?>
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label no-padding-right">
+                        <?php echo $conf['cname']; ?></label>
                         <div class="col-sm-6">
-                        <?php if ($conf['form_type'] == 'input'): ?>
-                        <!-- 单行文本 -->
-                        <input class="form-control" placeholder="" name="cname" type="text" >
-                        <?php elseif ($conf['form_type'] == 'textarea'): ?>
-                        <!-- 文本域-->
-                        <textarea class="form-control"  name="value" >11</textarea>
-                        <?php elseif ($conf['form_type'] == 'radion'): ?>
-                        <!-- 单选-->
-                        <div class="radio">
-                        <label>
-                        <input type="radio" class="colored-blue"  name="form_field_radio">
-                        <span class="text" >phone </span>
-                        </label>
-                        <label>
-                        <input type="radio" class="colored-blue"  name="form_field_radio">
-                        <span class="text" >phone </span>
-                        </label>
-                        </div>
-                        <?php elseif ($conf['form_type'] == 'select'): ?>
-                        <!-- 下拉菜单-->
-                        <select>
-                          <option value="">下拉菜单</option>
-                        </select>
-                         <?php elseif ($conf['form_type'] == 'select'): ?>
-                        <!-- 下拉菜单-->
-                        <select>
-                          <option value="">下拉菜单</option>
-                        </select>
-                        <?php elseif ($conf['form_type'] == 'checkbox'): ?>
-                        <!-- 复选框-->
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" class="colored-blue" checked="checked" name="">
-                                <span class="text">Bule</span>
-                            </label>
-                             <label>
-                                <input type="checkbox" class="colored-blue" checked="checked" name="">
-                                <span class="text">Bule</span>
-                            </label>
-                        </div>
-                        <?php elseif($conf['form_type']=='file'):?>
-                        <input name="canme" placeholder="" type="file">
-                        <!-- 上传文件 -->
-                        <?php endif;?>
-                        </div>
-                        </div>
-                       <?php endforeach;?>
-
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">保存信息</button>
+                            <?php if ($conf['form_type'] == 'input'): ?>
+                            <!-- 单行文本 -->
+                            <input class="form-control" placeholder="" name="<?php echo $conf['ename']; ?>" type="text" value="<?php echo $conf['value']; ?>">
+                            <?php elseif ($conf['form_type'] == 'textarea'): ?>
+                            <!-- 文本域-->
+                            <textarea class="form-control" name="<?php echo $conf['ename']; ?>" ><?php echo $conf['value']; ?>
+                              </textarea>
+                            <?php elseif ($conf['form_type'] == 'radion'): ?>
+                            <!-- 单选-->
+                            <div class="radio">
+                                <?php if($conf['values']): 
+                                    $arr=explode(',', $conf['values']);
+                                    foreach ($arr as $k1 => $v1):
+                                ?>
+                                <label>
+                                    <input <?php if($conf['value']==$v1){echo 'checked="checked"';}?> type="radio" class="colored-blue" name="<?php echo $conf['ename'];  ?>" value="<?php echo $v1;?>">
+                                    <span class="text"><?php echo $v1;?> </span>
+                                </label>
+                                <?php endforeach; endif;?>
                             </div>
+                            <?php elseif ($conf['form_type'] == 'select'): ?>
+                            <!-- 下拉菜单-->
+                            <select name="<?php echo $conf['ename']; ?>">
+                            <option value="">请选择</option>
+                            <?php if($conf['values']): 
+                                $arr=explode(',', $conf['values']);
+                                foreach ($arr as $k2 => $v2):
+                                ?>
+                            <option  <?php if($conf['value']==$v2){echo 'selected="selected"';}?> value="<?php echo $v2; ?>"><?php echo $v2;?></option>
+                            <?php endforeach; endif;?> 
+                            </select>
+                            <?php elseif ($conf['form_type'] == 'checkbox'): ?>
+                            <!-- 复选框-->
+                            <div class="checkbox">
+                                <?php if($conf['values']): 
+                                    $arr_values=explode(',', $conf['values']);
+                                    $arr_value=explode(',', $conf['value']);
+                                    foreach ($arr_values as $k1 => $v1):
+                                ?>
+                                <label>
+                                    <input <?php if(in_array($v1, $arr_value)){echo 'checked="checked"';}?> type="checkbox" class="colored-blue" name="<?php echo $conf['ename'];?>[]" value="<?php echo $v1;?>">
+                                    <span class="text"><?php echo $v1;?></span>
+                                </label>
+                                <?php endforeach; endif;?>
+                            </div>
+                            <?php elseif ($conf['form_type'] == 'file'): ?>
+                            <!-- 上传文件 -->
+                            <input name="<?php echo $conf['ename']; ?>" placeholder="" type="file">
+                            <?php if($conf['value']):?>
+                                <img src="/shop/public/static/uploads/<?php echo $conf['value']; ?>" height="40px">
+                            <?php else:?>
+                                暂无缩略图
+                            <?php endif;endif;?>
                         </div>
-                        </form>
+                    </div>
+                <?php endforeach;?>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">保存信息</button>
                         </div>
+                    </div>
+            </div>
+        </div>
+
+        <div id="profile11" class="tab-pane">
+             <div id="horizontal-form" class="form-horizontal" >
+                    <?php foreach ($GoodsConfRes as $k => $conf): ?>
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label no-padding-right">
+                        <?php echo $conf['cname']; ?></label>
+                        <div class="col-sm-6">
+                            <?php if ($conf['form_type'] == 'input'): ?>
+                            <!-- 单行文本 -->
+                            <input class="form-control" placeholder="" name="<?php echo $conf['ename']; ?>" type="text" value="<?php echo $conf['value']; ?>">
+                            <?php elseif ($conf['form_type'] == 'textarea'): ?>
+                            <!-- 文本域-->
+                            <textarea class="form-control" name="<?php echo $conf['ename']; ?>" ><?php echo $conf['value']; ?>
+                              </textarea>
+                            <?php elseif ($conf['form_type'] == 'radio'): ?>
+                            <!-- 单选-->
+                            <div class="radio">
+                                <?php if($conf['values']): 
+                                    $arr=explode(',', $conf['values']);
+                                    foreach ($arr as $k1 => $v1):
+                                ?>
+                                <label>
+                                    <input <?php if($conf['value']==$v1){echo 'checked="checked"';}?> type="radio" class="colored-blue" name="<?php echo $conf['ename'];  ?>" value="<?php echo $v1;?>">
+                                    <span class="text"><?php echo $v1;?> </span>
+                                </label>
+                                <?php endforeach; endif;?>
+                            </div>
+                            <?php elseif ($conf['form_type'] == 'select'): ?>
+                            <!-- 下拉菜单-->
+                            <select name="<?php echo $conf['ename']; ?>">
+                            <option value="">请选择</option>
+                            <?php if($conf['values']): 
+                                $arr=explode(',', $conf['values']);
+                                foreach ($arr as $k2 => $v2):
+                                ?>
+                            <option  <?php if($conf['value']==$v2){echo 'selected="selected"';}?> value="<?php echo $v2; ?>"><?php echo $v2;?></option>
+                            <?php endforeach; endif;?> 
+                            </select>
+                            <?php elseif ($conf['form_type'] == 'checkbox'): ?>
+                            <!-- 复选框-->
+                            <div class="checkbox">
+                                <?php if($conf['values']): 
+                                    $arr_values=explode(',', $conf['values']);
+                                    $arr_value=explode(',', $conf['value']);
+                                    foreach ($arr_values as $k1 => $v1):
+                                ?>
+                                <label>
+                                    <input <?php if(in_array($v1, $arr_value)){echo 'checked="checked"';}?> type="checkbox" class="colored-blue" name="<?php echo $conf['ename'];?>[]" value="<?php echo $v1;?>">
+                                    <span class="text"><?php echo $v1;?></span>
+                                </label>
+                                <?php endforeach; endif;?>
+                            </div>
+                            <?php elseif ($conf['form_type'] == 'file'): ?>
+                            <!-- 上传文件 -->
+                            <input name="<?php echo $conf['ename']; ?>" placeholder="" type="file">
+                            <?php if($conf['value']):?>
+                                <img src="/shop/public/static/uploads/<?php echo $conf['value']; ?>" height="40px">
+                            <?php else:?>
+                                暂无缩略图
+                            <?php endif;endif;?>
                         </div>
-
-
-
-                                <div id="profile11" class="tab-pane">
-                                    <p>33333</p>
+                    </div>
+                <?php endforeach;?>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">保存信息</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                         </div>
-                     </div>
-                  </div>
-
                             </div>
                         </div>
                     </div>

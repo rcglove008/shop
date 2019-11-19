@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:78:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\conf\add.htm";i:1572355269;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572355442;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:78:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\conf\add.htm";i:1572963290;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572355442;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -389,7 +389,7 @@
                                                 <div class="col-sm-6">
                                                    <select name="form_type">
                                                         <option value="input">input</option>
-                                                        <option value="radion">radion</option>
+                                                        <option value="radio">radio</option>
                                                         <option value="checkbox">checkbox</option>
                                                         <option value="textarea">textarea</option>
                                                         <option value="select">select</option>

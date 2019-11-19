@@ -1,10 +1,10 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:80:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\brand\list.htm";i:1571797244;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572010055;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:80:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\brand\list.htm";i:1573603878;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1573560796;}*/ ?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>ThinkPHP</title>
+    <title>商城系统</title>
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -109,17 +109,18 @@
                     <i class="menu-expand"></i>
                 </a>
             </li>
-            <li><a href="#">
-                    <span class="menu-text">商品分类</span>
-                    <i class="menu-expand"></i>
-                </a>
-            </li>
+           
             <li><a href="<?php echo url ('brand/lst'); ?>">
                     <span class="menu-text">商品品牌</span>
                     <i class="menu-expand"></i>
                 </a>
             </li>
-            <li><a href="#">
+             <li><a href="<?php echo url ('category/lst'); ?>">
+                    <span class="menu-text">商品分类</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+            <li><a href="<?php echo url ('Type/lst'); ?>">
                     <span class="menu-text">商品类型</span>
                     <i class="menu-expand"></i>
                 </a>
@@ -261,6 +262,67 @@
             </li>
             <li><a href="<?php echo url('article/lst'); ?>">
                     <span class="menu-text">文章管理</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<ul class="nav sidebar-menu">
+    <!--Dashboard-->
+    <li>
+        <a href="#" class="menu-dropdown">
+            <i class="menu-icon fa fa-picture-o"></i>
+            <span class="menu-text">图片管理</span>
+            <i class="menu-expand"></i>
+        </a>
+        <ul class="submenu">
+            <li><a href="<?php echo url('article/imglist'); ?>">
+                    <span class="menu-text">图片列表</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<ul class="nav sidebar-menu">
+    <!--Dashboard-->
+    <li>
+        <a href="#" class="menu-dropdown">
+            <i class="menu-icon fa fa-link"></i>
+            <span class="menu-text">友情链接</span>
+            <i class="menu-expand"></i>
+        </a>
+        <ul class="submenu">
+            <li><a href="<?php echo url('link/lst'); ?>">
+                    <span class="menu-text">链接列表</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<ul class="nav sidebar-menu">
+    <!--Dashboard-->
+    <li>
+        <a href="#" class="menu-dropdown">
+            <i class="menu-icon fa fa-link"></i>
+            <span class="menu-text">系统设置</span>
+            <i class="menu-expand"></i>
+        </a>
+        <ul class="submenu">
+            <li><a href="<?php echo url('conf/conflist'); ?>">
+                    <span class="menu-text">配置项</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+            <li><a href="<?php echo url('conf/lst'); ?>">
+                    <span class="menu-text">配置管理</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+             <li><a href="#">
+                    <span class="menu-text">支付方式设置</span>
                     <i class="menu-expand"></i>
                 </a>
             </li>

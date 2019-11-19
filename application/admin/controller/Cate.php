@@ -125,7 +125,7 @@ class Cate extends Controller
             }
             # code...
         }
-        $del = db('cate')->delete($sonids);
+        $del = $cate->delete($sonids);
         if ($del) {
             $this->success('删除成功', 'lst');
         } else {

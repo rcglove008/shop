@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:81:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\index\index.htm";i:1573603895;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1573560796;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\type\list.htm";i:1574124961;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1573560796;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -84,7 +84,7 @@
         <div class="page-container">
             <!-- Page Sidebar -->
             <div class="page-sidebar" id="sidebar">
-                <!-- Page Sidebar Header-->
+                <!-- Sidebar Menu -->
                 <div class="sidebar-header-wrapper">
     <input class="searchinput" type="text">
     <i class="searchicon fa fa-search"></i>
@@ -354,15 +354,53 @@
                 <!-- Page Breadcrumb -->
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
-                        <li class="active">控制面板</li>
+                        <li><a href="<?php echo url('index/index'); ?>">系统</a></li>
+                        <li class="active">用户管理</li>
                     </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
                 <!-- Page Body -->
                 <div class="page-body">
-                    <div style="text-align:center; line-height:1000%; font-size:24px;">
-                        实战开发大型B2C商城项目<br />
-                        <p style="color:#f00;">ThinkPHP交流群</p>
+                    <button type="button" tooltip="添加品牌" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '<?php echo url ('add'); ?>'"> <i class="fa fa-plus"></i> Add
+                    </button>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="widget">
+                                <div class="widget-body">
+                                    <div class="flip-scroll">
+                                        <table class="table table-bordered table-hover">
+                                        <thead class="">
+                                            <tr>
+                                                <th class="text-center" width="5%">ID</th>
+                                                <th >类型名称</th>
+                                                <th class="text-center" width="25%">操作</th>
+                                            </tr>
+                                        </thead>
+                                    <tbody>
+                                    <?php if(is_array($TypeRes) || $TypeRes instanceof \think\Collection || $TypeRes instanceof \think\Paginator): $i = 0; $__LIST__ = $TypeRes;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$type): $mod = ($i % 2 );++$i;?>
+                                    <tr>
+                                        <td align="center"><?php echo $type['id']; ?></td>
+                                        <td ><?php echo $type['type_name']; ?></td>
+                                        <td align="center">
+                                            <a href="<?php echo url ('attr/lst',array('type_id'=>$type['id'])); ?>" class="btn btn-darkorange btn-sm shiny">
+                                                <i class="fa fa-list"></i> 属性列表
+                                            </a>
+                                             <a href="<?php echo url('edit',array('id'=>$type['id'])); ?>" class="btn btn-primary btn-sm shiny">
+                                                <i class="fa fa-edit"></i> 编辑
+                                            </a>
+                                            <a href="#" onClick="warning('确实要删除吗', '<?php echo url('del',array('id'=>$type['id'])); ?>')" class="btn btn-danger btn-sm shiny">
+                                                <i class="fa fa-trash-o"></i> 删除
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; endif; else: echo "" ;endif; ?>
+                                    </tbody>
+                                        </table>
+                                    </div>
+                                    <div style="padding-top: 10px ; text-align: center;"> </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

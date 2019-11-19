@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\conf\list.htm";i:1572354100;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1572355442;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\conf\list.htm";i:1572354100;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1573560796;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -109,17 +109,18 @@
                     <i class="menu-expand"></i>
                 </a>
             </li>
-            <li><a href="#">
-                    <span class="menu-text">商品分类</span>
-                    <i class="menu-expand"></i>
-                </a>
-            </li>
+           
             <li><a href="<?php echo url ('brand/lst'); ?>">
                     <span class="menu-text">商品品牌</span>
                     <i class="menu-expand"></i>
                 </a>
             </li>
-            <li><a href="#">
+             <li><a href="<?php echo url ('category/lst'); ?>">
+                    <span class="menu-text">商品分类</span>
+                    <i class="menu-expand"></i>
+                </a>
+            </li>
+            <li><a href="<?php echo url ('Type/lst'); ?>">
                     <span class="menu-text">商品类型</span>
                     <i class="menu-expand"></i>
                 </a>

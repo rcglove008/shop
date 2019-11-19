@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:81:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\index\index.htm";i:1573603895;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1573560796;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:78:"D:\phpStudy\PHPTutorial\WWW\shop\public/../application/admin\view\attr\add.htm";i:1573569621;s:70:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\top.htm";i:1571834080;s:71:"D:\phpStudy\PHPTutorial\WWW\shop\application\admin\view\common\left.htm";i:1573560796;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -80,12 +80,12 @@
     </div>
 </div>
     <!-- /头部 -->
-    <div class="main-container container-fluid">
-        <div class="page-container">
-            <!-- Page Sidebar -->
-            <div class="page-sidebar" id="sidebar">
-                <!-- Page Sidebar Header-->
-                <div class="sidebar-header-wrapper">
+<div class="main-container container-fluid">
+<div class="page-container">
+        <!-- Page Sidebar -->
+<div class="page-sidebar" id="sidebar">
+            <!-- Sidebar Menu -->
+            <div class="sidebar-header-wrapper">
     <input class="searchinput" type="text">
     <i class="searchicon fa fa-search"></i>
     <div class="searchhelper">Search Reports, Charts, Emails or Notifications</div>
@@ -346,29 +346,92 @@
         </ul>
     </li>
 </ul>
-                <!-- /Sidebar Menu -->
-            </div>
-            <!-- /Page Sidebar -->
-            <!-- Page Content -->
-            <div class="page-content">
-                <!-- Page Breadcrumb -->
-                <div class="page-breadcrumbs">
-                    <ul class="breadcrumb">
-                        <li class="active">控制面板</li>
-                    </ul>
-                </div>
-                <!-- /Page Breadcrumb -->
-                <!-- Page Body -->
-                <div class="page-body">
-                    <div style="text-align:center; line-height:1000%; font-size:24px;">
-                        实战开发大型B2C商城项目<br />
-                        <p style="color:#f00;">ThinkPHP交流群</p>
+            <!-- /Sidebar Menu -->
+</div>
+        <!-- /Page Sidebar -->
+<!-- Page Content -->
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li><a href="<?php echo url('index/index'); ?>">系统</a></li>
+            <li><a href="<?php echo url('attr/lst'); ?>"">属性管理</a></li>
+        <li class=" active">添加属性</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="widget">
+                    <div class="widget-header bordered-bottom bordered-blue">
+                        <span class="widget-caption">新增属性</span>
+                    </div>
+                    <div class="widget-body">
+                    <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                    
+                    <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label no-padding-right">所属类型</label>
+                    <div class="col-sm-6">
+                    <select name="type_id"> 
+                    <option value="">请选择</option>
+                        <?php if(is_array($typeRes) || $typeRes instanceof \think\Collection || $typeRes instanceof \think\Paginator): $i = 0; $__LIST__ = $typeRes;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$type): $mod = ($i % 2 );++$i;?>
+                        <option value="<?php echo $type['id']; ?>"> <?php echo $type['type_name']; ?> </option>
+                        <?php endforeach; endif; else: echo "" ;endif; ?>
+                    </select>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label no-padding-right">商品属性名称</label>
+                    <div class="col-sm-6">
+                    <input class="form-control" placeholder="" name="attr_name" required="" type="text">
+                    </div>
+                    <p class="help-block col-sm-4 red">* 必填</p>
+                    </div>
+                    <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label no-padding-right">商品属性类型</label>
+                    <div class="col-sm-6">
+                    <div class="col-sm-6">
+                    <div class="radio" style="float:left; padding-right:10px;">
+                    <label>
+                        <input name="attr_type" value="1"  checked="checked" class="colored-blue" type="radio">
+                        <span class="text">单选</span>
+                    </label>
+                    </div>
+                    <div class="radio" style="float:left;">
+                    <label>
+                        <input name="attr_type" value="2" class="colored-blue" checked="checked" type="radio">
+                        <span class="text">唯一</span>
+                    </label>
+                    </div>
+                    </div>
+                    </div>
+                    <p class="help-block col-sm-4 red">* 必填</p>
+                    </div>
+                    <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label no-padding-right">商品属性值列表</label>
+                    <div class="col-sm-6">
+                    <textarea class="form-control" name="attr_values"></textarea>
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">保存信息</button>
+                    </div>
+                    </div>
+                    </form>
+                    </div>
                     </div>
                 </div>
             </div>
-            <!-- /Page Body -->
         </div>
-        <!-- /Page Content -->
+    </div>
+<!-- /Page Body -->
+</div>
+<!-- /Page Content -->
     </div>
     </div>
     <!--Basic Scripts-->
